@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ public class Timer extends AppCompatActivity {
     private NumberPicker Npic;
     private NumberPicker N2pic;
     private NumberPicker N3pic;
+    private Button start;
 
 
     @Override
@@ -42,12 +44,17 @@ public class Timer extends AppCompatActivity {
 
     public void btnTimer(View view) {
         int min , hour ,second;
-        hour=Npic.getValue()*3600;
-        min=N2pic.getValue()*60;
-        second=N3pic.getValue()+min+hour;
-        Toast.makeText(this, second,Toast.LENGTH_SHORT).show();
+
+
+        min=Npic.getValue();
+        min=min*60;
+        hour=N2pic.getValue();
+        hour=hour*3600;
+        second=N3pic.getValue()+hour+min;
+
+        Toast.makeText(this, second + "",Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(this,StartTimer.class);
-        intent.putExtra("timer",second);
+        intent.putExtra("timer" , second);
         startActivity(intent);
 
 

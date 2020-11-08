@@ -1,5 +1,6 @@
 package edu.cs.assigtwo;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,7 +16,7 @@ public class StartTimer extends AppCompatActivity {
 
 
     private int seconds;
-    private Boolean running;
+    private Boolean running=false;
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class StartTimer extends AppCompatActivity {
 
         }
 
-
+        runTimer();
     }
 
     public void onClickStart(View view) {
@@ -48,15 +49,13 @@ public class StartTimer extends AppCompatActivity {
     }
 
     public void onClickReset(View view) {
-
+        Intent intent=getIntent();
+        seconds =intent.getIntExtra("timer", 0);
         running=false;
     }
     private void runTimer(){
         final TextView txtView = findViewById(R.id.txtView);
         final Handler handler = new Handler();
-
-
-
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -66,12 +65,14 @@ public class StartTimer extends AppCompatActivity {
                 String time = String.format(Locale.getDefault(),
                         "%d:%02d:%02d", hours, minutes, snds);
                 txtView.setText(time);
+
                 if(running){
                     --seconds;
                 }
                 handler.postDelayed(this, 1000);
             }
         });
+
     }
 
 }
