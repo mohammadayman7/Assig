@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class StartTimer extends AppCompatActivity {
 
-
+//change
     private int seconds;
     private Boolean running=false;
     TextView textView;

@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+//change
 public class MainActivity extends AppCompatActivity {
     public static final String NAME = "NAME";
     public static final String اHIGHET="اHIGHET";
